@@ -1,0 +1,31 @@
+.form-group{
+    padding-bottom: 1%;
+    margin: 0 auto;
+    width:20%
+}
+.form-groupe{
+    color: rgb(95, 93, 218);
+    padding-top: 5%;
+    margin: 0 auto;
+    width:40%
+}
+.padd{
+    padding-top: 1%;
+}
+body {
+    background-color: rgb(53, 53, 53);
+}   
+
+label {
+    cursor: text;
+    color: rgb(255, 255, 255);
+    display: block;
+    padding: 10px;
+    margin: 3px;
+}
+.flash{
+    width:50%
+}
+.BGB{
+    background-color: rgb(47, 13, 13);
+}
