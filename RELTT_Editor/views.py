@@ -4,12 +4,12 @@ Routes and views for the flask application.
 import os
 import hashlib
 import sys
-from datetime import datetime
+import datetime
 from flask import Flask, redirect, url_for, render_template, request, session, flash,jsonify
-from datetime import timedelta
 from flask_sqlalchemy import SQLAlchemy
 from RELTT_Editor.dbAPI import users,db,app
-
+from RELTT_Editor.logs import *
+pathtohome="RELTT_Editor/homes/"
 
 app.config["SQLALCHEMY_DATABASE_URI"] = 'sqlite:///DB.RLT.sqlite3'
 app.config["SQLALCHEMY_TRACK_MODIFICATION"] = False
@@ -32,14 +32,14 @@ def home():
         return render_template(
             'index.html',
             title='Home Page',
-            year=datetime.now().year,
+            year=datetime.datetime.now().year,
             logged=True
         )
     else:
         return render_template(
             'index.html',
             title='Home Page',
-            year=datetime.now().year,
+            year=datetime.datetime.now().year,
             logged=False
         )
 
@@ -68,7 +68,14 @@ def logoff():
 def plugins():
     print(plugcfg[0].plugin_name)
     return render_template("plugins.html",pllst=plugcfg,logged=userlogged(session))
-
+@app.route('/logs')
+def logs():
+    logs=logger.logs
+    for i in plugcfg:
+        for j in i.logs:
+            logs.append(j)
+    
+    return render_template("logs.html",pllst=logs)
 
 @app.route('/about')
 def about():
@@ -76,7 +83,7 @@ def about():
     return render_template(
         'about.html',
         title='About',
-        year=datetime.now().year,
+        year=datetime.datetime.now().year,
         message='Your application description page.',
         logged=userlogged(session)
     )
@@ -88,19 +95,21 @@ def register():
         if user!=passw:
             fu=users.query.filter_by(name=user).first()
             if fu:
-                return render_template('register.html',title='register',        year=datetime.now().year,
+                return render_template('register.html',title='register',        year=datetime.datetime.now().year,
                 message=f'username: "{user}" is not available',logged=userlogged(session))
             else:
+
                 nutc=users(user,hashlib.sha224(passw.encode()).hexdigest())
                 db.session.add(nutc)
                 db.session.commit()
                 session["user"]=user
                 session["passw"]=hashlib.sha224(passw.encode()).hexdigest()
+                
                 return redirect(url_for("home"))
             
         pass
     else:
-        return render_template('register.html',title='register',        year=datetime.now().year,
+        return render_template('register.html',title='register',        year=datetime.datetime.now().year,
         message='Your application description page.',logged=userlogged(session))
 @app.route("/bg",methods=["POST","GET"])
 def bg():
@@ -121,7 +130,7 @@ def login():
                     session["passw"]=fu.passw
                 else:
                     flash("invalid information or your account is not set-up correcly", "info")
-                    return render_template('login.html',title='login',        year=datetime.now().year,
+                    return render_template('login.html',title='login',        year=datetime.datetime.now().year,
                     message='You are not already register? go into the register page',logged=userlogged(session))
 
         return redirect(url_for("home"))
@@ -129,14 +138,14 @@ def login():
         return render_template('login.html',logged=userlogged(session))
 @app.route("/Drive")
 def drive():
-    return render_template()
+    return render_template("IDE.html")
     
     
 
 
 @app.route("/IDE")
 def IDE():
-    return render_template("IDE.html",title='Reltt-IDE',        year=datetime.now().year,
+    return render_template("IDE.html",title='Reltt-IDE',        year=datetime.datetime.now().year,
                     message='Reltt')
 
 

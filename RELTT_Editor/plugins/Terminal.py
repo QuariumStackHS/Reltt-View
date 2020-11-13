@@ -5,11 +5,11 @@ from RELTT_Editor.plugins.pluginloader import *
 from RELTT_Editor.dbAPI import *
 from flask import Flask, redirect, url_for, render_template, request, session, flash, jsonify
 
-plugin_name = "plugscript"
+plugin_name = "Terminal"
 plugin_version = "0.0.1"
 @app.route(f"/plugins/{plugin_name}")
 def main_view():
-    return render_template("plugscript/main.html")
+    return render_template("Terminal/main.html")
 
 
 global thiscfg

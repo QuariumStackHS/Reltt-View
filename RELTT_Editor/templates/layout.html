@@ -39,21 +39,25 @@
 
             </li>
             {% endif %}
+            {% if logged!=False %}
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 Other
               </a>
               <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                 <a class="dropdown-item" href="{{url_for('plugins')}}">Plugins</a>
-                {% if logged!=False %}
+                
+                <a class="dropdown-item" href="{{ url_for('logs')}}">Logs</a>
                 <div class="dropdown-divider"></div>
+                
                 <a class="dropdown-item" href="{{ url_for('profile') }}">My account</a>
                 <a class="dropdown-item" href="{{ url_for('drive') }}">Drive {{DriveSpace}}</a>
                 <a class="dropdown-item" href="{{ url_for('logoff') }}">Log off</a>
               </li>
-                {% endif %}
+                
               </div>
             </li>
+            {% endif %}
           </ul>
           <form class="form-inline my-2 my-lg-0">
             <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">

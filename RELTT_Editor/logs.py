@@ -8,7 +8,8 @@ logfile = f"logs/{datetime.datetime.now().strftime('%b-%d-%I%M%p-%G')}"
 
 
 class log:
-    def __init__(self):
+    def __init__(self,loffrom):
+        self.fromd=loffrom
         self.type = ""
         self.str = ""
         self.gravity = 0
@@ -16,8 +17,8 @@ class log:
 
 
 class newlog(log):
-    def __init__(self, typed, strs, gravity):
-        super().__init__()
+    def __init__(self, typed, strs, gravity,who="main app"):
+        super().__init__(who)
 
         self.type = typed
         self.str = strs

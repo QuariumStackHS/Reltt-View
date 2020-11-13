@@ -1,4 +1,5 @@
 from logging import exception
+import warnings
 from flask import config
 from RELTT_Editor.logs import *
 
@@ -11,17 +12,40 @@ except ValueError:
     PORT = 5555
 def urlfor(strd):
     return f"http://{HOST}{PORT}/{strd}"
+
+class pl_log:
+    def __init__(self):
+        self.type = ""
+        self.str = ""
+        self.gravity = 0
+        self.when = datetime.datetime.now().strftime('%b-%d-%I%M%p-%G')
+        
+
+
+class pl_newlog(pl_log):
+    def __init__(self, typed, strs, gravity,fromd):
+        super().__init__()
+        self.fromd=fromd
+        self.type = typed
+        self.str = strs
+        self.gravity = gravity
+        self.when = datetime.datetime.now().strftime('%b-%d-%I%M%p-%G')
 class pl_view:
     def __init__(self,path,desc):
         self.path=path
         self.desc=desc
 
 class pl_config:
-    def __init__(self,plname,plv,pln,plmainp):
+    def __init__(self,plname,plv,pln,plmainp,desc,logopath,errors,warnings,logs):
         self.plugin_name=plname
+        self.plugin_desc=desc
+        self.plugin_logo=logopath
         self.plugin_version=plv
         self.notification=pln
+        self.logs=logs
         self.mainpage=plmainp
+        self.errors=errors
+        self.warnings=warnings
         self.views=[]
     def add_view(self,path,desc=None):
         if type(path)==type(pl_view):
