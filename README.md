@@ -1,12 +1,18 @@
 # Reltt-View
 
 TODO:
-  drives
+  chat:
+  
+    real time chat like discord or messenger
+  notifications:
+    
+    notification of the app including message calls or any notification by a plugin
+    
   drives:
   
   
-    notifications
-    real time chat like discord or messenger
+    
+    
     uplaud
     download
     modify certain type of file (or make a "open with")
