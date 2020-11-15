@@ -1,7 +1,8 @@
 from logging import exception
 import warnings
 from flask import config
-from RELTT_Editor.logs import *
+from RELTT_WEB.logs import *
+import datetime
 
 import os
 from os import environ
@@ -61,9 +62,9 @@ pluginsconfig=[]
 def load_plugins():
     pluginlist=[]
     pluginsconfig=[]
-    for i in open("RELTT_Editor/plugins/pl.cfg","r").read().splitlines():
+    for i in open("RELTT_WEB/plugins/pl.cfg","r").read().splitlines():
         try:
-            exec(f"from RELTT_Editor.plugins.{i} import *")
+            exec(f"from RELTT_WEB.plugins.{i} import *")
             exec(f"global j; j={i}_getconfig()")
             global j
             pluginsconfig.append(j)

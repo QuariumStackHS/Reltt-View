@@ -1,5 +1,5 @@
-from RELTT_Editor.dbAPI import * 
-from RELTT_Editor import *
+from RELTT_WEB.dbAPI import * 
+from RELTT_WEB import *
 from os import environ
 HOST = environ.get('SERVER_HOST', 'localhost')
 try:

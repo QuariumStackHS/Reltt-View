@@ -5,17 +5,25 @@ import os
 import hashlib
 import sys
 import datetime
+from flask import Flask,render_template,request,redirect,url_for
+from werkzeug.utils import secure_filename
+import os
+from time import sleep
+from flask import copy_current_request_context
+import threading
+import datetime
 from flask import Flask, redirect, url_for, render_template, request, session, flash,jsonify
 from flask_sqlalchemy import SQLAlchemy
-from RELTT_Editor.dbAPI import users,db,app
-from RELTT_Editor.logs import *
+from RELTT_WEB.dbAPI import users,db,app
+from RELTT_WEB.logs import *
+from RELTT_WEB.Drive import *
 pathtohome="RELTT_Editor/homes/"
 
 app.config["SQLALCHEMY_DATABASE_URI"] = 'sqlite:///DB.RLT.sqlite3'
 app.config["SQLALCHEMY_TRACK_MODIFICATION"] = False
 app.secret_key = "EnterYoutSecretKey"
 
-import RELTT_Editor.plugins.pluginloader as pld
+import RELTT_WEB.plugins.pluginloader as pld
 plulist,plugcfg =pld.load_plugins()
 @app.route('/profile')
 def profile():
@@ -138,7 +146,7 @@ def login():
         return render_template('login.html',logged=userlogged(session))
 @app.route("/Drive")
 def drive():
-    return render_template("IDE.html")
+    return ""
     
     
 

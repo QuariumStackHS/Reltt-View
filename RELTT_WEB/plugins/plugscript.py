@@ -1,8 +1,8 @@
 from datetime import time
 from logging import warning
 import time
-from RELTT_Editor.plugins.pluginloader import *
-from RELTT_Editor.dbAPI import *
+from RELTT_WEB.plugins.pluginloader import *
+from RELTT_WEB.dbAPI import *
 from flask import Flask, redirect, url_for, render_template, request, session, flash, jsonify
 
 plugin_name = "plugscript"
