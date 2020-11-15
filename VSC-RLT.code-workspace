@@ -12,16 +12,32 @@
 		{
 			"path": "RELTT_WEB"
 		}
+
 	],
 	"settings": {
-		"files.exclude" : {
+		"files.exclude": {
 			"RELTT_WEB": true,
 			"templates": true,
 			"logs": true,
 			"homes": true,
 			"__pycache__": true,
 			"static": true
-		}
-}
-	
+		},
+		"files.autoSave": "afterDelay",
+		"python.autoComplete.addBrackets": true,
+		"python.languageServer": "Pylance",
+		"python.analysis.completeFunctionParens": true,
+		"python.analysis.extraPaths": [
+			"../"
+		]
+	},
+	"tasks": {
+		"version": "2.0.0",
+		"tasks": [{
+			"label": "start server",
+			"type": "shell",
+			"command": "python3 runserver.py",
+			"problemMatcher": []
+		},]
+	}
 }

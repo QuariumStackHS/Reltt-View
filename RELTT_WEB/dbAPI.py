@@ -31,7 +31,6 @@ preinit of python script (before the main func)
 
 """
 
-
 class defs(db.Model):
     _id = db.Column(db.Integer, primary_key=True)
     projectname=db.Column(db.String(100))
