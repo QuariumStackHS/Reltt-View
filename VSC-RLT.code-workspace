@@ -1,4 +1,5 @@
 {
+
 	"folders": [
 		{
 			"path": "todo"
@@ -13,6 +14,9 @@
 			"path": "RELTT_WEB/templates"
 		},
 		{
+			"path": "QFS"
+		},
+		{
 			"path": "RELTT_WEB"
 		}
 
@@ -25,11 +29,11 @@
 			"todo": true,
 			"homes": true,
 			"__pycache__": true,
-			"static": true
+			"static": true,
+			"QFS":true
 		},
 		"files.autoSave": "afterDelay",
 		"python.autoComplete.addBrackets": true,
-		"python.languageServer": "Pylance",
 		"python.analysis.completeFunctionParens": true,
 		"python.analysis.extraPaths": [
 			"../"

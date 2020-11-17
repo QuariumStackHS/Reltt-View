@@ -17,6 +17,7 @@ from flask_sqlalchemy import SQLAlchemy
 from RELTT_WEB.dbAPI import users,db,app
 from RELTT_WEB.logs import *
 from RELTT_WEB.Drive import *
+from RELTT_WEB.IOThread import *
 pathtohome="RELTT_Editor/homes/"
 
 app.config["SQLALCHEMY_DATABASE_URI"] = 'sqlite:///DB.RLT.sqlite3'
@@ -25,6 +26,16 @@ app.secret_key = "EnterYoutSecretKey"
 
 import RELTT_WEB.plugins.pluginloader as pld
 plulist,plugcfg =pld.load_plugins()
+"""
+@app.route('API/')
+def get_allfolder_indir():
+"""
+IOTM=IOThread_Manager()
+XQFSTM=threading.Thread(IOTM.starter,)
+XQFSTM.start()
+XQFSTM.
+
+
 @app.route('/profile')
 def profile():
     return ""
@@ -119,11 +130,7 @@ def register():
     else:
         return render_template('register.html',title='register',        year=datetime.datetime.now().year,
         message='Your application description page.',logged=userlogged(session))
-@app.route("/bg",methods=["POST","GET"])
-def bg():
-    if request.method=="GET":
-        request.get
-    return "tu aime les penis?"
+
 
 @app.route("/login", methods=["POST", "GET"])
 def login():
