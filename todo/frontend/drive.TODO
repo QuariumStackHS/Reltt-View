@@ -1,0 +1,9 @@
+
+
+target=Drive.html
+
+objectif de la page:
+    voir les "shares" de l'utilsateur
+    copier et paste des "fichier" et des "dossiers"
+    en gros un file explorer la dedans, et aussi je veux peremetre de faire un "open with" sur le fichier et l'ouvrir avec un plugin web (genre un plugin fait avec mon system de plugin)
+    un maximum despace est alouer a l'utilisateur il ne peux donc pas le depasser

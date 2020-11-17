@@ -1,6 +1,9 @@
 {
 	"folders": [
 		{
+			"path": "todo"
+		},
+		{
 			"path": "."
 		},
 		{
@@ -19,6 +22,7 @@
 			"RELTT_WEB": true,
 			"templates": true,
 			"logs": true,
+			"todo": true,
 			"homes": true,
 			"__pycache__": true,
 			"static": true

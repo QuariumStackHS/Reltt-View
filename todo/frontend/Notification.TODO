@@ -1,0 +1,10 @@
+target= notifications.html
+centre des notifications ainsi que laffichage de notification dans les pages
+
+methods request:
+
+                route pour chercher linformation sur:
+                    username
+                    notifications
+
+
