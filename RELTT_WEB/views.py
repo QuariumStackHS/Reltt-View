@@ -30,11 +30,11 @@ plulist,plugcfg =pld.load_plugins()
 @app.route('API/')
 def get_allfolder_indir():
 """
+"""
 IOTM=IOThread_Manager()
 XQFSTM=threading.Thread(IOTM.starter,)
 XQFSTM.start()
-XQFSTM.
-
+"""
 
 @app.route('/profile')
 def profile():
