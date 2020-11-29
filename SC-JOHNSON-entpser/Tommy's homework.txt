@@ -1,0 +1,27 @@
+la page Reltt view serais composer de cette facon:
+
+jaimerais que chaque "form" ajax est leur code separer pour permettre a un utilisateur de "depiner" le form et le voir dans une fenettre secondaire comme une pup up (sa permet detre mieu )
+----------------------------------------------------------------------------------------------
+|   Quarium Reltt View                               ______   _____
+|                       Home    about   storage     /Python\ /Reltt\
+|------------------------------------------------------------|     |-------------------------
+| Object searcher:      |
+| search: prin          |
+|-----------------------|
+| type:   name          |
+| fnc     int print()   |
+| class   printer       |
+|_______________________|
+|
+|Project explorer:
+| main.py:
+|         class printer
+|         func main
+|          
+|
+|
+|
+|
+|
+|
+|
