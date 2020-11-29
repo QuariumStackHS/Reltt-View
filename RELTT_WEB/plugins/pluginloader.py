@@ -4,6 +4,7 @@ from flask import config
 from RELTT_WEB.logs import *
 import datetime
 
+
 import os
 from os import environ
 HOST = environ.get('SERVER_HOST', 'localhost')
@@ -64,6 +65,7 @@ def load_plugins():
     pluginsconfig=[]
     for i in open("RELTT_WEB/plugins/pl.cfg","r").read().splitlines():
         try:
+            
             exec(f"from RELTT_WEB.plugins.{i} import *")
             exec(f"global j; j={i}_getconfig()")
             global j
@@ -73,4 +75,21 @@ def load_plugins():
             newlogq=newlog(f"error {e}",f"loading plugin \"{i}\"",10)
             logger.Write(newlogq)
     return pluginlist, pluginsconfig
+def reload_plugins():
+    pluginlist=[]
+    pluginsconfig=[]
+    for i in open("RELTT_WEB/plugins/pl.cfg","r").read().splitlines():
+        try:
+            import importlib
+            
+            importlib.import_module("RELTT_WEB.plugins.{i}")
+            exec(f"global j; j={i}_getconfig()")
+            global j
+            pluginsconfig.append(j)
+            pluginlist.append(i)
+        except Exception as e:
+            newlogq=newlog(f"error {e}",f"loading plugin \"{i}\"",10)
+            logger.Write(newlogq)
+    return pluginlist, pluginsconfig
+
     

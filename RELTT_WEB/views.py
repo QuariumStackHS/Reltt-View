@@ -18,6 +18,7 @@ from RELTT_WEB.dbAPI import users,db,app
 from RELTT_WEB.logs import *
 from RELTT_WEB.Drive import *
 from RELTT_WEB.IOThread import *
+
 pathtohome="RELTT_Editor/homes/"
 
 app.config["SQLALCHEMY_DATABASE_URI"] = 'sqlite:///DB.RLT.sqlite3'
