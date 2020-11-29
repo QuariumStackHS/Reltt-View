@@ -1,0 +1,27 @@
+{% extends "layout.html" %}
+{% block content %}
+<link rel="stylesheet" type="text/css" href="/static/content/plugin.css" />
+<div class="row row-cols-1 row-cols-md-2">
+    
+{% for i in pllst %}
+<div href="{{i.mainpage}}" class="col mb-4" style="max-height: 250; max-width: 250;">
+    <div class="card">
+      <img href="{{i.mainpage}}" src="{{i.plugin_logo}}" sizes="5" class="card-img-top smallc rounded-circle" alt="...">
+      <div class="card-body">
+        <h3  class="card-title">{{i.plugin_name}}</h3>
+        <h6 class="card-title">Version: {{i.plugin_version}}</h6>
+        <p class="card-text">Description: {{i.plugin_desc}}</p>
+        <a href="{{i.mainpage}}" class="btn btn-primary">Manage</a>
+        {% if i.errors>=1 %}
+        <span class="badge badge-danger">Errors:{{i.errors}}</span>
+        {%endif%}
+        {% if i.warnings>=1 %}
+        <span class="badge badge-warning">Warnings:{{i.warnings}}</span>
+        {% endif %}
+        </div>
+    </div>
+  </div>
+  
+{% endfor %}
+</div>
+{% endblock %}

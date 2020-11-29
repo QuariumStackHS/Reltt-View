@@ -1,0 +1,54 @@
+.form-group{
+    padding-bottom: 1%;
+    margin: 0 auto;
+    width:20%
+}
+.form-groupe{
+    color: rgb(95, 93, 218);
+    padding-top: 5%;
+    margin: 0 auto;
+    width:40%
+}
+.padd{
+    padding-top: 5%;
+}
+body {
+    background-color: rgb(53, 53, 53);
+}   
+
+label {
+    cursor: text;
+    color: rgb(228, 228, 228);
+    display: block;
+    padding: 10px;
+    margin: 3px;
+}
+.progress{
+    padding-bottom: 20;
+    width:20%;
+    background-color: black;
+    scale: 120%;
+}
+.progress-bar {
+    background-color: #007bff;
+}
+
+.progress-bar-striped {
+    background-image: linear-gradient(45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent);
+    background-size: 1rem 1rem;
+}
+.cpuusage{
+    color: rgb(255, 255, 255);
+}
+.u{
+    color: rgb(0, 255, 55);
+}
+.table{
+    width:90%;
+}
+.TED{
+    padding-top: 20%;
+}
+.flash{
+    width:20%;
+}
