@@ -15,11 +15,11 @@ h("cd ..")
 copy_("RELTT_WEB/","build/RELTT_WEB/")
 
 #os.chdir("d:\\tmp")
-for root, dirs, files in os.walk(".", topdown = False):
+for root, dirs, files in os.walk("build/RELTT_WEB/", topdown = False):
    for name in files:
         if name.endswith(".py"):
            py_compile.compile(root+"/"+name,root+"/"+name+"c") 
-           os.remove(root+"/"+name)
+           #os.remove(root+"/"+name)
         print(os.path.join(root, name))
    for name in dirs:
         if name=="__pycache__":
