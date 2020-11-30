@@ -26,7 +26,7 @@ app.config["SQLALCHEMY_TRACK_MODIFICATION"] = False
 app.secret_key = "EnterYoutSecretKey"
 
 import RELTT_WEB.plugins.pluginloader as pld
-plulist,plugcfg =pld.load_plugins()
+Registerer, plulist,plugcfg =pld.load_plugins()
 """
 @app.route('API/')
 def get_allfolder_indir():
@@ -102,9 +102,7 @@ def plugins():
 @app.route('/logs')
 def logs():
     logs=logger.logs
-    for i in plugcfg:
-        for j in i.logs:
-            logs.append(j)
+
     
     return render_template("logs.html",pllst=logs)
 

@@ -81,5 +81,4 @@ class users(db.Model):
 
 def getallshares(user:users):
     fu=shareacces.query.filter_by(username=user.name).all()
-    fu
 

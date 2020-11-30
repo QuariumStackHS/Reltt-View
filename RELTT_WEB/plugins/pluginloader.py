@@ -1,6 +1,7 @@
 from logging import exception
 import warnings
 from flask import config
+from flask import send_from_directory
 from RELTT_WEB.logs import *
 import datetime
 from RELTT_WEB.plugins.apps.PL_apps import *
@@ -37,6 +38,10 @@ class pl_view:
         self.path=path
         self.desc=desc
 #import RELTT_Editor.plugins.plugtest as plt
+
+@app.route("/PLDIR/Resource/<path:path>")
+def static_dir(path):
+    return send_from_directory("static", path)
 Registerer=PL_Apps()
 pluginlist=[]
 pluginsconfig=[]
@@ -46,16 +51,16 @@ def load_plugins():
     for i in open("RELTT_WEB/plugins/pl.cfg","r").read().splitlines():
         try:
             global inp
-
+            global Registerer
             exec(f"from RELTT_WEB.plugins.{i} import *")
-            exec(f"global j; j={i}_init(Registerer)")
+            exec(f"global Registerer;global j; j={i}(Registerer)")
             global j
             pluginsconfig.append(j)
             pluginlist.append(i)
         except Exception as e:
             newlogq=newlog(f"error {e}",f"loading plugin \"{i}\"",10)
             logger.Write(newlogq)
-    return pluginlist, pluginsconfig
+    return Registerer, pluginlist, pluginsconfig
 def reload_plugins():
     pluginlist=[]
     pluginsconfig=[]

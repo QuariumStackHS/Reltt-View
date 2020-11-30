@@ -4,22 +4,26 @@ import time
 from RELTT_WEB.plugins.pluginloader import *
 from RELTT_WEB.dbAPI import *
 from flask import Flask, redirect, url_for, render_template, request, session, flash, jsonify
-
+from RELTT_WEB.plugins.apps.PL_apps import *
 PLUGIN_NAME = "plugscript"
 PLUGIN_VERSION = "0.0.1"
-@app.route(f"/plugins/{plugin_name}")
-def main_view():
-    return render_template("plugscript/main.html")
+
 
 Registerer=None
+plug=Plugin(PLUGIN_NAME,PLUGIN_VERSION)
 global thiscfg
-
-def plugscript_getconfig(Registerer:PL_Apps):
-    Registerer=Registerer
-    Registerer.addapp
-
-# convention put /plugins/{plugin_name}/view_name
+class plugscript(Plugin):
+    def __init__(self,registerer:PL_Apps):
+        self.Registerer=registerer
+        self.Registerer.init(PLUGIN_NAME,PLUGIN_VERSION)
+        self.aa=PL_App(self)
+        self.aa.register_resource("plugins/Resource/")
+        #Registerer.
+@plug.add_route("")
+def main_view():
+    return render_template("plugscript/main.html")
+# convention put PLuginname_Version
 # this will prevent future probleme
-@app.route(f"/plugins/{plugin_name}/Logs")
+@plug.route(f"/plugins/{PLUGIN_VERSION}/Logs")
 def logspl():
     return "test"
