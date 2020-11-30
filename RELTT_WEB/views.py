@@ -40,11 +40,22 @@ XQFSTM.start()
 @app.route('/profile')
 def profile():
     return ""
+
+
 def userlogged(session):
     if "user" in session and "passw" in session:
         return True
     else:
         return False
+@app.route("/apps")
+def apps():
+    if userlogged(session):
+        return render_template("apps.html")
+    else:
+        return "<center><h1>404 Page Not Found"
+        
+    
+
 @app.route('/')
 @app.route('/home')
 def home():

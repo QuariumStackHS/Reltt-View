@@ -3,7 +3,7 @@ import warnings
 from flask import config
 from RELTT_WEB.logs import *
 import datetime
-
+from RELTT_WEB.plugins.apps.PL_apps import *
 
 import os
 from os import environ
@@ -36,28 +36,8 @@ class pl_view:
     def __init__(self,path,desc):
         self.path=path
         self.desc=desc
-
-class pl_config:
-    def __init__(self,plname,plv,pln,plmainp,desc,logopath,errors,warnings,logs):
-        self.plugin_name=plname
-        self.plugin_desc=desc
-        self.plugin_logo=logopath
-        self.plugin_version=plv
-        self.notification=pln
-        self.logs=logs
-        self.mainpage=plmainp
-        self.errors=errors
-        self.warnings=warnings
-        self.views=[]
-    def add_view(self,path,desc=None):
-        if type(path)==type(pl_view):
-            self.views.append(path)
-        else:
-            av=pl_view(path,desc)
-            self.views.append(av)
-
-        pass
 #import RELTT_Editor.plugins.plugtest as plt
+Registerer=PL_Apps()
 pluginlist=[]
 pluginsconfig=[]
 def load_plugins():
@@ -65,9 +45,10 @@ def load_plugins():
     pluginsconfig=[]
     for i in open("RELTT_WEB/plugins/pl.cfg","r").read().splitlines():
         try:
-            
+            global inp
+
             exec(f"from RELTT_WEB.plugins.{i} import *")
-            exec(f"global j; j={i}_getconfig()")
+            exec(f"global j; j={i}_init(Registerer)")
             global j
             pluginsconfig.append(j)
             pluginlist.append(i)
