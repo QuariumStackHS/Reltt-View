@@ -7,7 +7,13 @@ from flask import Flask, redirect, url_for, render_template, request, session, f
 from RELTT_WEB.plugins.apps.PL_apps import *
 PLUGIN_NAME = "plugscript"
 PLUGIN_VERSION = "0.0.1"
+"""
+folder in plugins
+templates (will be copy to the main template dir)
 
+
+
+"""
 
 Registerer=None
 plug=Plugin(PLUGIN_NAME,PLUGIN_VERSION)
